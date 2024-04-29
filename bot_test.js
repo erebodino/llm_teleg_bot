@@ -1,39 +1,29 @@
-const TelegramBot = require('node-telegram-bot-api');
-const express = require('express');
-const axios = require('axios');
+import TelegramBot from 'node-telegram-bot-api';
+import axios from 'axios';
 
-// const app = express();
 
-// Configura el token del bot de Telegram
-const token = '6891603134:AAFQ5WJcqZMsBMNkt-loqA1v5f2FYyWwOio'; // Reemplaza 'TU_TOKEN' con el token de tu bot
+// BotToken
+const token = '6891603134:AAFQ5WJcqZMsBMNkt-loqA1v5f2FYyWwOio';
 
-// Crea una instancia del bot
+// Bot instance
 const bot = new TelegramBot(token, { polling: true });
 
-// Ruta de inicio para verificar que el servidor está en funcionamiento
-// app.get('/', (req, res) => {
-//     res.send('El microservicio está en funcionamiento');
-// });
-
-// URL de la API
+//python endpoint
 const apiUrl = 'http://127.0.0.1:8000/api/v1/message';
 
-// Manejador de comandos
+
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, '¡Hola! Soy un bot de ejemplo. ¿Cómo puedo ayudarte?');
 });
 
-// Manejador de mensajes
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     const messageText = msg.text;
 
     try {
-        // Envía el mensaje a la API
         const response = await axios.post(apiUrl, {
-            // chatId: chatId,
-            chatId: "1423978433",
+            chatId: chatId,
             messageText: messageText
         });
         if (response.data.message && response.data.message.category) {
@@ -49,8 +39,4 @@ bot.on('message', async (msg) => {
     
 });
 
-// Inicia el servidor
 const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//     console.log(`Servidor escuchando en el puerto ${port}`);
-// });
