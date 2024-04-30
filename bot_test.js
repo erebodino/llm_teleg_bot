@@ -1,15 +1,19 @@
 import TelegramBot from 'node-telegram-bot-api';
 import axios from 'axios';
 
+//|| '6891603134:AAFQ5WJcqZMsBMNkt-loqA1v5f2FYyWwOio'
+//'http://127.0.0.1:8000'
+
 
 // BotToken
-const token = '6891603134:AAFQ5WJcqZMsBMNkt-loqA1v5f2FYyWwOio';
+const token = process.env.BOT_TOKEN;
 
 // Bot instance
 const bot = new TelegramBot(token, { polling: true });
 
 //python endpoint
-const apiUrl = 'http://127.0.0.1:8000/api/v1/message';
+const apiUrlBase = process.env.API_URL_BASE;
+const apiUrl = `${apiUrlBase}/api/v1/message`;
 
 
 bot.onText(/\/start/, (msg) => {
