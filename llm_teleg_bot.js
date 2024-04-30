@@ -33,6 +33,10 @@ bot.on('message', async (msg) => {
             const replyMessage = `${category} expense added ✅`;
             bot.sendMessage(chatId, replyMessage);
         }
+        if (response.data.message && response.data.message.error_msg) {
+            const replyMessage = response.data.message.error_msg;
+            bot.sendMessage(chatId, replyMessage);
+        }
 
     } catch (error) {
         console.error('Error al enviar el mensaje a la API:', error);
