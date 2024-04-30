@@ -12,7 +12,7 @@ const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 //python endpoint
-const apiUrlBase = process.env.API_URL_BASE;
+const apiUrlBase = process.env.API_URL_BASE || 'http://127.0.0.1:8000';
 const apiUrl = `${apiUrlBase}/api/v1/message`;
 
 
