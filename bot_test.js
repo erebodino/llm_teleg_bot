@@ -1,9 +1,6 @@
 import TelegramBot from 'node-telegram-bot-api';
 import axios from 'axios';
 
-//|| '6891603134:AAFQ5WJcqZMsBMNkt-loqA1v5f2FYyWwOio'
-//'http://127.0.0.1:8000'
-
 
 // BotToken
 const token = process.env.BOT_TOKEN;
