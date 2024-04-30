@@ -17,6 +17,7 @@ git clone https://github.com/erebodino/llm_teleg_bot.git
 ### Install dependencies:
 
 ```bash
+cd llm_teleg_bot
 npm install
 ```
 
