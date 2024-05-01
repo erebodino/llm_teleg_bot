@@ -13,10 +13,27 @@ const apiUrlBase = process.env.API_URL_BASE || 'http://127.0.0.1:8000';
 const apiMessageUrl = `${apiUrlBase}/message/`;
 const apiRegisterUrl = `${apiUrlBase}/register_user/`;
 
+const commands = [
+    { command: '/start', description: 'Show requeriments to start using the bot.' },
+    { command: '/register_me', description: 'Register yourself.' },
+    { command: '/help', description: 'Get help information.' }
+];
+
+// Set the commands
+bot.setMyCommands(commands).then(() => {
+    console.log('Bot commands successfully set');
+}).catch((error) => {
+    console.error('Error setting bot commands:', error);
+});
 
 bot.onText(/\/start/,(msg) => {
     const chatId = msg.chat.id;
-    bot.sendMessage(chatId, "Hi, I'm a bot to register expenses, send me a message with a expense and I will analize it.");
+    bot.sendMessage(chatId, "Hi, I'm a bot to register expenses, register yourself and then send me a message with a expense and I will analize it.");
+});
+
+bot.onText(/\/help/,(msg) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, "2 commands available: /start and /register_me, check the description for each.");
 });
 
 
