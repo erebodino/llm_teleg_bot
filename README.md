@@ -6,6 +6,10 @@ Telegram API and the Bot Service. It manages the reception of inbound messages f
 users, forwards these messages to the Bot Service for processing, and sends the
 appropriate responses back to the users via Telegram.
 
+## Usage
+The bot has 3 commands, /start, /register_me and /help. Each of them has a brief text self explainatory. If you are a new user
+you should register and then start using the bot.
+
 ## Install
 
 ### Clone the repository
